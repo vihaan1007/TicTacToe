@@ -19,6 +19,9 @@ button{
     width: 100px;
     border: 1px solid #facc15;
     border-radius: 10px;
+    font-family: system-ui, Arial, sans-serif;
+    font-size: 64px;
+    font-weight: 800;
 }
 
 table{
@@ -30,4 +33,22 @@ table{
 
 button:active{
     transform: scale(0.9);
+}
+
+#status{
+    position: fixed;
+    top: 500px;
+    left: 475px;
+}
+
+#rG{
+    position: fixed;
+    top: 535px;
+    left: 500px;
+    background-color: #dc2626;
+    color: white;
+    width: 180px;
+    height: 60px;
+    font-size: 24px;
+    font-weight: bold;
 }

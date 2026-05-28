@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Tic Tac Toe</title>
     <link rel = "stylesheet" href = "style.css">
 </head>
 <body>
@@ -15,21 +15,25 @@
     <main>
         <table>
             <tr>
-                <td><button data-box = "7"></button></td>
-                <td><button data-box = "8"></button></td>
-                <td><button data-box = "9"></button></td>
+                <td><button class = "box" data-index = "7"></button></td>
+                <td><button class = "box" data-index = "8"></button></td>
+                <td><button class = "box" data-index = "9"></button></td>
             </tr>
             <tr>
-                <td><button data-box = "4"></button></td>
-                <td><button data-box = "5"></button></td>
-                <td><button data-box = "6"></button></td>
+                <td><button class = "box" data-index = "4"></button></td>
+                <td><button class = "box" data-index = "5"></button></td>
+                <td><button class = "box" data-index = "6"></button></td>
             </tr>
             <tr>
-                <td><button data-box = "1"></button></td>
-                <td><button data-box = "2"></button></td>
-                <td><button data-box = "3"></button></td>
+                <td><button class = "box" data-index = "1"></button></td>
+                <td><button class = "box" data-index = "2"></button></td>
+                <td><button class = "box" data-index = "3"></button></td>
             </tr>
+            <p id = "status">Status</p>
         </table>
+        <button id = "rG">
+            Reset Game
+        </button>
     </main>
     <footer>
         Made using HTML &bull; CSS &bull; JS.
