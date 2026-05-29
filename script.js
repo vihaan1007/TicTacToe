@@ -1,5 +1,9 @@
+//Alerts
+
 alert("Hello");
 alert("To Tic\nTac\nToe");
+
+//fixed vars
 
 const WIN = [
     [1, 2, 3],
@@ -12,20 +16,48 @@ const WIN = [
     [3, 5, 7]
 ];
 
+const dEmoji = ["🎭", "🌀", "🎲", "♾️"];
+
+const wEmoji = ["🏆", "🚀", "⚡", "💥"];
+
+//DOM
+
 let box = document.querySelectorAll(".box");
-let O = [];
-let X = [];
-let P = "O";
+
 let s = document.querySelector("#status");
+
 let board = document.querySelector("table");
+
+//state
+
+let O = [];
+
+let X = [];
+
+let P = "O";
+
+//starting status
+
 s.innerHTML = "O's chance";
 
+//loop for all buttons
+
 box.forEach((cell) => {
+    //main event listener
+
     cell.addEventListener("click", (e) => {
+        //tracking
+
         let pB = e.target.dataset.index;
         let b = e.target
+
+        //validation
+
         if(O.includes(pB) || X.includes(pB)) {
-            s.innerHTML = "Box alredy filled play another move";            
+            s.innerHTML = "Box alredy filled play another move";
+
+            //visualisation and internal state changing
+
         } else if(P == "O") {
             b.innerHTML = P;
             O.push(pB);
@@ -39,49 +71,64 @@ box.forEach((cell) => {
             P = "O";
             s.innerHTML = "o's chance"
         }
+
+        //pattern of WIN
+
         for(let patt of WIN) {
+            var dEI = Math.floor(Math.random() * (4 - 1 + 1)) + 1;
+            var wEI = Math.floor(Math.random() * (4 - 1 + 1)) + 1;
+            //value of pattern
+
             for(let val of patt) {
+
+                //for X
+
                 if(P == "O") {
                     var xWin = true;
-                    var xFWin = true;
                     if(!(X.includes(val))) {
-                        xFWin = false;
                         xWin = false;
-                    } else{
-                        xFWin = true; 
                     };
+
+                    //for O
+
                 } else if(P == "X") {
                     var oWin = true;
-                    var oFWin = true;
                     if(!(O.includes(val))) {
-                        oFWin = false;
                         oWin = false;
-                    } else {
-                        oFWin = true;
                     }; 
                 };
-                oFWin = oWin;
-                xFWin = xWin;
             };
-            if(xFWin) {
-                board.innerHTML = "X Wins!";
+            
+            //Win visualising
+
+            if(xWin) {
+                board.innerHTML = `X Wins! ${wEmoji[wEI - 1]}`;
                 board.style.color = "gold";
                 board.style.fontSize = "56px";
                 break
             } else if(!(xFWin)) {
                 continue
             };
-            if(oFWin) {
-                board.innerHTML = "O Wins!";
+            if(oWin) {
+                board.innerHTML = `O Wins! ${wEmoji[wEI - 1]}`;
                 board.style.color = "gold";
                 board.style.fontSize = "56px";
                 break
             } else if(!(oFWin)) {
                 continue
             };
+
+            //Draw
+
+            if(O.concat(X).length = 9) {
+                board.innerHTML = `It's a Draw! ${dEmoji[dEI - 1]}`
+                board.style.color = "#9333ea;";
+            }
         };
     });
 });
+
+//reset
 
 let rG = document.querySelector("#rG");
 rG.addEventListener("click", () => {
